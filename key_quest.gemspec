@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Joshua D. Forrest'"]
   spec.email         = ["'joshuadforrest@gmail.com'"]
 
-  spec.summary       = %q{im farst game}
+  spec.summary       = %q{im first game}
   #spec.description   = %q{TODO: Write a longer description or delete this line.}
   spec.homepage      = "https://github.com/PladEnt/key_quest"
   spec.license       = "MIT"
@@ -40,5 +40,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.17"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "pry"
-  spec.add_dependency "nokogiri"
 end
