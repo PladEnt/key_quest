@@ -1,13 +1,14 @@
 
 class Board
-  attr_accessor :board
+  attr_accessor :boar, :door
 
   def initialize
-    @board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+    @board = [" ", " ", " ", "!", " ", " ", " ", "8", " "]
+    @door = "_"
   end
 
   def puts_board
-    puts "+---+= =+---+"
+    puts "+---+=#{@door}=+---+"
     puts "| #{@board[1]} | #{@board[2]} | #{@board[3]} |"
     puts "|---+---+---|"
     puts "| #{@board[4]} | #{@board[5]} | #{@board[6]} |"
