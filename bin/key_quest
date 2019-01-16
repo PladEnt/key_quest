@@ -3,7 +3,7 @@
 require "bundler/setup"
 require_relative "../lib/key_quest"
 
-puts "what is your name?"
+puts "what is your heros name?"
 imput = gets.chomp.strip
 
 CLI.new(imput).welcome

@@ -1,25 +1,36 @@
 
 class Board
-  attr_accessor :boar, :door
+  @@cell
 
   def initialize
-    @board = [" ", " ", " ", "!", " ", " ", " ", "8", " "]
-    @door = "_"
+    @@cell = [" ", " ", " ", "!", " ", " ", " ", "8", " "]
+
   end
 
-  def puts_board
-    puts "+---+=#{@door}=+---+"
-    puts "| #{@board[1]} | #{@board[2]} | #{@board[3]} |"
+  def self.puts_board
+    puts " "
+    puts "+---+=0=+---+"
+    puts "| #{@@cell[0]} | #{@@cell[1]} | #{@@cell[2]} |"
     puts "|---+---+---|"
-    puts "| #{@board[4]} | #{@board[5]} | #{@board[6]} |"
+    puts "| #{@@cell[3]} | #{@@cell[4]} | #{@@cell[5]} |"
     puts "|---+---+---|"
-    puts "| #{@board[7]} | #{@board[8]} | #{@board[9]} |"
+    puts "| #{@@cell[6]} | #{@@cell[7]} | #{@@cell[8]} |"
     puts "+---+-=-+---+"
-    puts "|"
-    puts "|"
-    puts "|"
-    puts "|"
-    puts "|"
+  end
 
+  def self.update_board
+    puts "|make you move|"
+    puts "+-------------+"
+    imput = gets.chomp.strip
+
+    if imput == "w"
+
+    elsif imput == "s"
+
+    elsif imput == "a"
+
+    elsif imput == "d"
+
+    end
   end
 end
