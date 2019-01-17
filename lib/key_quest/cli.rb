@@ -39,7 +39,7 @@ class CLI
     puts "|  If you have a bomb  |"
     puts "| you can go though a  |"
     puts "| well, you'll get one |"
-    puts "|   every 5 lenels.    |"
+    puts "|   every 5 levels.    |"
     puts "+----------------------+"
 
     Board.new
