@@ -5,7 +5,7 @@ class Board
 
   def initialize
     @@cell = [" ", " ", " ", "!", " ", " ", " ", "8", " "]
-    @@level = 0
+    @@level = 1
   end
 
   def self.puts_board
@@ -16,13 +16,13 @@ class Board
     puts "| #{@@cell[3]} | #{@@cell[4]} | #{@@cell[5]} +---------+"
     puts "|---+---+---|    #{@@level}"
     puts "| #{@@cell[6]} | #{@@cell[7]} | #{@@cell[8]} |"
-    puts "+---+-=-+---+---+"
+    puts "+---+-=-+---+----+"
     Board.update_board
   end
 
   def self.update_board
     puts "| make your move |"
-    puts "+-------------+"
+    puts "+----------------+"
     imput = gets.chomp.strip
 
     if imput == "w"

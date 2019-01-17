@@ -1,8 +1,10 @@
 class CLI
   attr_accessor :user
+  @@user
 
   def initialize(user)
     @user = user
+    @@user = user
   end
 
   def welcome
@@ -25,6 +27,9 @@ class CLI
     puts "+----------------------+"
     puts "|use 'w/a/s/d' to wove |"
     puts "+----------------------+"
+    puts "|Git to the '!' that is|"
+    puts "|       the key.       |"
+    puts "+----------------------+"
 
     Board.new
     Board.puts_board
@@ -38,8 +43,8 @@ class CLI
     puts '  /\/\/\/\/\/\/\/\/\/\ '
     puts ' /\/\/\/\/\/\/\/\/\/\/\ '
     puts "+----------------------+"
-    puts "|      Thank You!      |"
-    puts "          #{}"
+    puts "|Thank You for playing |"
+    puts "         #{@@user}!"
     puts "+----------------------+"
     puts "| You made it to level |"
     puts "           #{level}"
