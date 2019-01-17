@@ -41,6 +41,9 @@ class CLI
     puts "| well, you'll get one |"
     puts "|   every 5 levels.    |"
     puts "+----------------------+"
+    puts "|Don't let the 'M' get |"
+    puts "| you, its the monster |"
+    puts "+----------------------+"
 
     Board.new
     Board.puts_board
@@ -60,7 +63,6 @@ class CLI
     puts "| You made it to level |"
     puts "           #{level}"
     puts "+----------------------+"
-    puts "|   Exiting... Done!   |"
-    puts "+----------------------+"
+
   end
 end

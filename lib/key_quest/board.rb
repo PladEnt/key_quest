@@ -6,7 +6,7 @@ class Board
   @@bomb
 
   def initialize
-    @@cell = ["F", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "8", " ", " ", " "]
+    @@cell = ["F", " ", " ", " ", " ", " ", "M", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "8", " ", " ", " "]
     @@level = 1
     @@key = "no"
     @@bomb = 3
@@ -136,6 +136,7 @@ class Board
           @@cell[rand(7..41)] = "X"
           num -=1
         end
+        @@cell[rand(7..41)] = "M"
         @@cell[rand(0..48)] = "F"
         if @@cell[45] != "F"
           @@cell[45] = "8"
@@ -148,6 +149,50 @@ class Board
         end
       end
     end
+    Board.ai_move
+    if @@cell.index("8") == nil
+      CLI.exit(@@level)
+      puts "| The monster got you  |"
+      puts "+----------------------+"
+
+      exit
+    end
     Board.puts_board
+  end
+
+  def self.ai_move
+    if @@cell.index("M") != nil
+
+      @@move = rand(0..3)
+
+      if @@move == 0
+        if @@cell[@@cell.index("M")-1] != "F" && @@cell[@@cell.index("M")-7] != "X" && @@cell.index("M") > 6
+
+          @@cell[@@cell.index("M")-7] = "M"
+          @@cell[@@cell.index("M")+7] = " "
+        end
+
+      elsif @@move == 1
+        if @@cell[@@cell.index("M")-1] != "F" && @@cell[@@cell.index("M")+7] != "X" && @@cell.index("M") < 42
+
+          @@cell[@@cell.index("M")+7] = "M"
+          @@cell[@@cell.index("M")] = " "
+        end
+
+      elsif @@move == 2
+        if @@cell[@@cell.index("M")-1] != "F" && @@cell[@@cell.index("M")-1] != "X" && @@cell.index("M") != 0 && @@cell.index("M") != 7 && @@cell.index("M") != 14 && @@cell.index("M") != 21 && @@cell.index("M") != 28 && @@cell.index("M") != 35 && @@cell.index("M") != 42
+
+          @@cell[@@cell.index("M")-1] = "M"
+          @@cell[@@cell.index("M")+1] = " "
+        end
+
+      elsif @@move == 3
+        if @@cell[@@cell.index("M")-1] != "F" &&@@cell[@@cell.index("M")+1] != "X" && @@cell.index("M") != 6 && @@cell.index("M") != 13 && @@cell.index("M") != 20 && @@cell.index("M") != 27 && @@cell.index("M") != 34 && @@cell.index("M") != 41 && @@cell.index("M") != 48
+
+          @@cell[@@cell.index("M")+1] = "M"
+          @@cell[@@cell.index("M")] = " "
+        end
+      end
+    end
   end
 end
