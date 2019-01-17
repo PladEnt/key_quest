@@ -5,7 +5,7 @@ class Board
   @@key
 
   def initialize
-    @@cell = ["!", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "8", " ", " ", " "]
+    @@cell = ["F", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "8", " ", " ", " "]
     @@level = 1
     @@key = "no"
   end
@@ -36,8 +36,8 @@ class Board
     imput = gets.chomp.strip
 
     if imput == "w"
-      if @@cell.index("8") > 6
-        if @@cell[@@cell.index("8")-7] == "!"
+      if @@cell[@@cell.index("8")-7] != "X" && @@cell.index("8") > 6
+        if @@cell[@@cell.index("8")-7] == "F"
           @@key = "yes"
         end
 
@@ -46,8 +46,8 @@ class Board
       end
 
     elsif imput == "s"
-      if @@cell.index("8") < 42
-        if @@cell[@@cell.index("8")+7] == "!"
+      if @@cell[@@cell.index("8")+7] != "X" && @@cell.index("8") < 42
+        if @@cell[@@cell.index("8")+7] == "F"
           @@key = "yes"
         end
 
@@ -56,8 +56,8 @@ class Board
       end
 
     elsif imput == "a"
-      if @@cell.index("8") != 0 && @@cell.index("8") != 7 && @@cell.index("8") != 14 && @@cell.index("8") != 21 && @@cell.index("8") != 28 && @@cell.index("8") != 35 && @@cell.index("8") != 42
-        if @@cell[@@cell.index("8")-1] == "!"
+      if @@cell[@@cell.index("8")-1] != "X" && @@cell.index("8") != 0 && @@cell.index("8") != 7 && @@cell.index("8") != 14 && @@cell.index("8") != 21 && @@cell.index("8") != 28 && @@cell.index("8") != 35 && @@cell.index("8") != 42
+        if @@cell[@@cell.index("8")-1] == "F"
           @@key = "yes"
         end
 
@@ -66,8 +66,8 @@ class Board
       end
 
     elsif imput == "d"
-      if @@cell.index("8") != 6 && @@cell.index("8") != 13 && @@cell.index("8") != 20 && @@cell.index("8") != 27 && @@cell.index("8") != 34 && @@cell.index("8") != 41 && @@cell.index("8") != 48
-        if @@cell[@@cell.index("8")+1] == "!"
+      if @@cell[@@cell.index("8")+1] != "X" && @@cell.index("8") != 6 && @@cell.index("8") != 13 && @@cell.index("8") != 20 && @@cell.index("8") != 27 && @@cell.index("8") != 34 && @@cell.index("8") != 41 && @@cell.index("8") != 48
+        if @@cell[@@cell.index("8")+1] == "F"
           @@key = "yes"
         end
 
@@ -83,15 +83,21 @@ class Board
     elsif imput == "c"
       if @@cell.index("8") == 3 && @@key == "yes"
         @@cell = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
-        @@cell[rand(0..48)] = "!"
-        if @@cell[45] != "!"
+
+        @@key = "no"
+        @@level += 1
+        num = @@level
+        while num > 0
+          @@cell[rand(7..41)] = "X"
+          num -=1
+        end
+        @@cell[rand(0..48)] = "F"
+        if @@cell[45] != "F"
           @@cell[45] = "8"
         else
           @@cell[45] = "8"
-          @@cell[44] = "!"
+          @@cell[44] = "F"
         end
-        @@key = "no"
-        @@level += 1
       end
     end
     Board.puts_board

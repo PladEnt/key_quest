@@ -27,7 +27,7 @@ class CLI
     puts "+----------------------+"
     puts "|Use 'w/a/s/d' to move |"
     puts "+----------------------+"
-    puts "|Get to the '!' that is|"
+    puts "|Get to the 'F' that is|"
     puts "|       the key.       |"
     puts "+----------------------+"
     puts "| Use 'c' to open the  |"
