@@ -113,6 +113,13 @@ class Board
         @@cell[@@cell.index("8")] = " "
       end
 
+    elsif imput == "restart"
+      @@cell = ["F", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "8", " ", " ", " "]
+      @@level = 1
+      @@key = "no"
+      @@bomb = 3
+
+
     elsif imput == "exit"
       num = @@level
       CLI.exit(num)
