@@ -33,6 +33,9 @@ class CLI
     puts "| Use 'c' to open the  |"
     puts "|         door.        |"
     puts "+----------------------+"
+    puts "| 'X's are walls, you  |"
+    puts "| can't go though thim |"
+    puts "+----------------------+"
 
     Board.new
     Board.puts_board
