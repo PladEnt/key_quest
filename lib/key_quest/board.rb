@@ -3,11 +3,13 @@ class Board
   @@cell
   @@level
   @@key
+  @@bomb
 
   def initialize
     @@cell = ["F", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "8", " ", " ", " "]
     @@level = 1
     @@key = "no"
+    @@bomb = 3
   end
 
   def self.puts_board
@@ -17,7 +19,7 @@ class Board
     puts "|---+---+---+---+---+---+---| level: #{@@level}"
     puts "| #{@@cell[7]} | #{@@cell[8]} | #{@@cell[9]} | #{@@cell[10]} | #{@@cell[11]} | #{@@cell[12]} | #{@@cell[13]} |---------+"
     puts "|---+---+---+---+---+---+---| Key: #{@@key}"
-    puts "| #{@@cell[14]} | #{@@cell[15]} | #{@@cell[16]} | #{@@cell[17]} | #{@@cell[18]} | #{@@cell[19]} | #{@@cell[20]} |"
+    puts "| #{@@cell[14]} | #{@@cell[15]} | #{@@cell[16]} | #{@@cell[17]} | #{@@cell[18]} | #{@@cell[19]} | #{@@cell[20]} | Bomb: #{@@bomb}"
     puts "+---+---+---+---+---+---+---+"
     puts "| #{@@cell[21]} | #{@@cell[22]} | #{@@cell[23]} | #{@@cell[24]} | #{@@cell[25]} | #{@@cell[26]} | #{@@cell[27]} |"
     puts "+---+---+---+---+---+---+---+"
@@ -43,10 +45,28 @@ class Board
 
         @@cell[@@cell.index("8")-7] = "8"
         @@cell[@@cell.index("8")+7] = " "
+
+      elsif @@cell[@@cell.index("8")-7] == "X" && @@bomb > 0
+        @@bomb -= 1
+        if @@cell[@@cell.index("8")-7] == "F"
+          @@key = "yes"
+        end
+
+        @@cell[@@cell.index("8")-7] = "8"
+        @@cell[@@cell.index("8")+7] = " "
       end
 
     elsif imput == "s"
       if @@cell[@@cell.index("8")+7] != "X" && @@cell.index("8") < 42
+        if @@cell[@@cell.index("8")+7] == "F"
+          @@key = "yes"
+        end
+
+        @@cell[@@cell.index("8")+7] = "8"
+        @@cell[@@cell.index("8")] = " "
+
+      elsif @@cell[@@cell.index("8")+7] == "X" && @@bomb > 0
+        @@bomb -= 1
         if @@cell[@@cell.index("8")+7] == "F"
           @@key = "yes"
         end
@@ -63,11 +83,29 @@ class Board
 
         @@cell[@@cell.index("8")-1] = "8"
         @@cell[@@cell.index("8")+1] = " "
+
+      elsif @@cell[@@cell.index("8")-1] == "X" && @@bomb > 0
+        @@bomb -= 1
+        if @@cell[@@cell.index("8")-1] == "F"
+          @@key = "yes"
+        end
+
+      @@cell[@@cell.index("8")-1] = "8"
+      @@cell[@@cell.index("8")+1] = " "
       end
 
     elsif imput == "d"
       if @@cell[@@cell.index("8")+1] != "X" && @@cell.index("8") != 6 && @@cell.index("8") != 13 && @@cell.index("8") != 20 && @@cell.index("8") != 27 && @@cell.index("8") != 34 && @@cell.index("8") != 41 && @@cell.index("8") != 48
         if @@cell[@@cell.index("8")+1] == "F"
+          @@key = "yes"
+        end
+
+        @@cell[@@cell.index("8")+1] = "8"
+        @@cell[@@cell.index("8")] = " "
+
+      elsif @@cell[@@cell.index("8")+1] == "X" && @@bomb > 0
+         @@bomb -= 1
+        if @@cell[@@cell.index("8")-1] == "F"
           @@key = "yes"
         end
 
@@ -97,6 +135,9 @@ class Board
         else
           @@cell[45] = "8"
           @@cell[44] = "F"
+        end
+        if @@level % 5 == 0
+          @@bomb += 1
         end
       end
     end

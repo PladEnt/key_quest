@@ -36,6 +36,11 @@ class CLI
     puts "| 'X's are walls, you  |"
     puts "| can't go though thim |"
     puts "+----------------------+"
+    puts "|  If you have a bomb  |"
+    puts "| you can go though a  |"
+    puts "| well, you'll get one |"
+    puts "|   every 5 lenels.    |"
+    puts "+----------------------+"
 
     Board.new
     Board.puts_board
