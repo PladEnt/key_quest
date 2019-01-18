@@ -43,6 +43,12 @@ class Board
           @@key = "yes"
         elsif @@cell[@@cell.index("8")-7] == "O"
           @@bomb += 1
+
+        elsif  @@cell[@@cell.index("8")-7] == "W"
+          CLI.exit(@@level)
+          puts "|Jumping on W kills you|"
+          puts "+----------------------+"
+          exit
         end
 
         @@cell[@@cell.index("8")-7] = "8"
@@ -64,6 +70,11 @@ class Board
           @@key = "yes"
         elsif @@cell[@@cell.index("8")+7] == "O"
           @@bomb += 1
+        elsif  @@cell[@@cell.index("8")+7] == "W"
+          CLI.exit(@@level)
+          puts "|Jumping on W kills you|"
+          puts "+----------------------+"
+          exit
         end
 
         @@cell[@@cell.index("8")+7] = "8"
@@ -85,6 +96,11 @@ class Board
           @@key = "yes"
         elsif @@cell[@@cell.index("8")-1] == "O"
           @@bomb += 1
+        elsif  @@cell[@@cell.index("8")-1] == "W"
+          CLI.exit(@@level)
+          puts "|Jumping on W kills you|"
+          puts "+----------------------+"
+          exit
         end
 
         @@cell[@@cell.index("8")-1] = "8"
@@ -106,6 +122,11 @@ class Board
           @@key = "yes"
         elsif @@cell[@@cell.index("8")+1] == "O"
           @@bomb += 1
+        elsif  @@cell[@@cell.index("8")+1] == "W"
+          CLI.exit(@@level)
+          puts "|Jumping on W kills you|"
+          puts "+----------------------+"
+          exit
         end
 
         @@cell[@@cell.index("8")+1] = "8"
@@ -264,28 +285,28 @@ class Board
       @@move_S = rand(0..3)
 
       if @@move_S == 0
-        if @@cell[@@cell.index("S")-7] != "F" && @@cell[@@cell.index("S")-7] != "X" && @@cell.index("S") > 6
+        if @@cell[@@cell.index("S")-7] != "F" && @@cell.index("S") > 6
 
           @@cell[@@cell.index("S")-7] = "S"
           @@cell[@@cell.index("S")+7] = " "
         end
 
       elsif @@move_S == 1
-        if @@cell[@@cell.index("S")+7] != "F" && @@cell[@@cell.index("S")+7] != "X" && @@cell.index("S") < 42
+        if @@cell[@@cell.index("S")+7] != "F" && @@cell.index("S") < 42
 
           @@cell[@@cell.index("S")+7] = "S"
           @@cell[@@cell.index("S")] = " "
         end
 
       elsif @@move_S == 2
-        if @@cell[@@cell.index("S")-1] != "F" && @@cell[@@cell.index("S")-1] != "X" && @@cell.index("S") != 0 && @@cell.index("S") != 7 && @@cell.index("S") != 14 && @@cell.index("S") != 21 && @@cell.index("S") != 28 && @@cell.index("S") != 35 && @@cell.index("S") != 42
+        if @@cell[@@cell.index("S")-1] != "F" && @@cell.index("S") != 0 && @@cell.index("S") != 7 && @@cell.index("S") != 14 && @@cell.index("S") != 21 && @@cell.index("S") != 28 && @@cell.index("S") != 35 && @@cell.index("S") != 42
 
           @@cell[@@cell.index("S")-1] = "S"
           @@cell[@@cell.index("S")+1] = " "
         end
 
       elsif @@move_S == 3
-        if @@cell[@@cell.index("S")+1] != "F" &&@@cell[@@cell.index("S")+1] != "X" && @@cell.index("S") != 6 && @@cell.index("S") != 13 && @@cell.index("S") != 20 && @@cell.index("S") != 27 && @@cell.index("S") != 34 && @@cell.index("S") != 41 && @@cell.index("S") != 48
+        if @@cell[@@cell.index("S")+1] != "F" && @@cell.index("S") != 6 && @@cell.index("S") != 13 && @@cell.index("S") != 20 && @@cell.index("S") != 27 && @@cell.index("S") != 34 && @@cell.index("S") != 41 && @@cell.index("S") != 48
 
           @@cell[@@cell.index("S")+1] = "S"
           @@cell[@@cell.index("S")] = " "
