@@ -114,7 +114,7 @@ class Board
       end
 
     elsif imput == "restart"
-      @@cell = ["F", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "8", " ", " ", " "]
+      @@cell = ["F", " ", " ", " ", " ", " ", "M", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "8", " ", " ", " "]
       @@level = 1
       @@key = "no"
       @@bomb = 3
@@ -166,14 +166,14 @@ class Board
       @@move = rand(0..3)
 
       if @@move == 0
-        if @@cell[@@cell.index("M")-1] != "F" && @@cell[@@cell.index("M")-7] != "X" && @@cell.index("M") > 6
+        if @@cell[@@cell.index("M")-7] != "F" && @@cell[@@cell.index("M")-7] != "X" && @@cell.index("M") > 6
 
           @@cell[@@cell.index("M")-7] = "M"
           @@cell[@@cell.index("M")+7] = " "
         end
 
       elsif @@move == 1
-        if @@cell[@@cell.index("M")-1] != "F" && @@cell[@@cell.index("M")+7] != "X" && @@cell.index("M") < 42
+        if @@cell[@@cell.index("M")+7] != "F" && @@cell[@@cell.index("M")+7] != "X" && @@cell.index("M") < 42
 
           @@cell[@@cell.index("M")+7] = "M"
           @@cell[@@cell.index("M")] = " "
@@ -187,7 +187,7 @@ class Board
         end
 
       elsif @@move == 3
-        if @@cell[@@cell.index("M")-1] != "F" &&@@cell[@@cell.index("M")+1] != "X" && @@cell.index("M") != 6 && @@cell.index("M") != 13 && @@cell.index("M") != 20 && @@cell.index("M") != 27 && @@cell.index("M") != 34 && @@cell.index("M") != 41 && @@cell.index("M") != 48
+        if @@cell[@@cell.index("M")+1] != "F" &&@@cell[@@cell.index("M")+1] != "X" && @@cell.index("M") != 6 && @@cell.index("M") != 13 && @@cell.index("M") != 20 && @@cell.index("M") != 27 && @@cell.index("M") != 34 && @@cell.index("M") != 41 && @@cell.index("M") != 48
 
           @@cell[@@cell.index("M")+1] = "M"
           @@cell[@@cell.index("M")] = " "
