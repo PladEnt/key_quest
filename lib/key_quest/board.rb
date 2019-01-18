@@ -150,6 +150,10 @@ class Board
           @@cell[rand(0..48)] = "O"
         end
 
+        if @@level == 30
+          @@cell = ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]
+        end
+
         if @@level >= 15
           @@cell[rand(7..41)] = "M"
           @@cell[rand(7..41)] = "W"
