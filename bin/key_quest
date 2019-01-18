@@ -9,3 +9,9 @@ puts "+------------------------+"
 imput = gets.chomp.strip
 
 CLI.new(imput).welcome
+
+#################
+##cd key_quest ##
+##cd bin       ##
+##./key_quest  ##
+#################

@@ -150,11 +150,11 @@ class Board
           @@cell[rand(0..48)] = "O"
         end
 
-        if @@level >= 25
+        if @@level >= 15
           @@cell[rand(7..41)] = "M"
           @@cell[rand(7..41)] = "W"
           @@cell[rand(7..41)] = "S"
-        elsif @@level >= 15
+        elsif @@level >= 10
           @@cell[rand(7..41)] = "M"
           @@cell[rand(7..41)] = "W"
         else
