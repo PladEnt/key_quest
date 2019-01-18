@@ -41,6 +41,8 @@ class Board
       if @@cell[@@cell.index("8")-7] != "X" && @@cell.index("8") > 6
         if @@cell[@@cell.index("8")-7] == "F"
           @@key = "yes"
+        elsif @@cell[@@cell.index("8")-7] == "O"
+          @@bomb += 1
         end
 
         @@cell[@@cell.index("8")-7] = "8"
@@ -60,6 +62,8 @@ class Board
       if @@cell[@@cell.index("8")+7] != "X" && @@cell.index("8") < 42
         if @@cell[@@cell.index("8")+7] == "F"
           @@key = "yes"
+        elsif @@cell[@@cell.index("8")+7] == "O"
+          @@bomb += 1
         end
 
         @@cell[@@cell.index("8")+7] = "8"
@@ -79,6 +83,8 @@ class Board
       if @@cell[@@cell.index("8")-1] != "X" && @@cell.index("8") != 0 && @@cell.index("8") != 7 && @@cell.index("8") != 14 && @@cell.index("8") != 21 && @@cell.index("8") != 28 && @@cell.index("8") != 35 && @@cell.index("8") != 42
         if @@cell[@@cell.index("8")-1] == "F"
           @@key = "yes"
+        elsif @@cell[@@cell.index("8")-1] == "O"
+          @@bomb += 1
         end
 
         @@cell[@@cell.index("8")-1] = "8"
@@ -98,6 +104,8 @@ class Board
       if @@cell[@@cell.index("8")+1] != "X" && @@cell.index("8") != 6 && @@cell.index("8") != 13 && @@cell.index("8") != 20 && @@cell.index("8") != 27 && @@cell.index("8") != 34 && @@cell.index("8") != 41 && @@cell.index("8") != 48
         if @@cell[@@cell.index("8")+1] == "F"
           @@key = "yes"
+        elsif @@cell[@@cell.index("8")+1] == "O"
+          @@bomb += 1
         end
 
         @@cell[@@cell.index("8")+1] = "8"
@@ -135,6 +143,9 @@ class Board
         while num > 0
           @@cell[rand(7..41)] = "X"
           num -=1
+        end
+        if @@level % 10 = 0
+          @@cell[rand(0..48)] = "O"
         end
         @@cell[rand(7..41)] = "M"
         @@cell[rand(0..48)] = "F"
