@@ -144,7 +144,7 @@ class Board
           @@cell[rand(7..41)] = "X"
           num -=1
         end
-        if @@level % 10 = 0
+        if @@level % 10 == 0
           @@cell[rand(0..48)] = "O"
         end
         @@cell[rand(7..41)] = "M"
