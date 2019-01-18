@@ -41,8 +41,8 @@ class CLI
     puts "| well, you'll get one |"
     puts "|   every 5 levels.    |"
     puts "+----------------------+"
-    puts "|Don't let the 'M' get |"
-    puts "| you, its the monster |"
+    puts "|Don't let M, W, S get |"
+    puts "|you there the monsters|"
     puts "+----------------------+"
 
     Board.new

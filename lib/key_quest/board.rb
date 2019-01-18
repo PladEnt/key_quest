@@ -140,26 +140,43 @@ class Board
         @@key = "no"
         @@level += 1
         num = @@level
+
         while num > 0
           @@cell[rand(7..41)] = "X"
           num -=1
         end
+
         if @@level % 10 == 0
           @@cell[rand(0..48)] = "O"
         end
-        @@cell[rand(7..41)] = "M"
+
+        if @@level >= 25
+          @@cell[rand(7..41)] = "M"
+          @@cell[rand(7..41)] = "W"
+          @@cell[rand(7..41)] = "S"
+        elsif @@level >= 15
+          @@cell[rand(7..41)] = "M"
+          @@cell[rand(7..41)] = "W"
+        else
+          @@cell[rand(7..41)] = "M"
+        end
+
+
         @@cell[rand(0..48)] = "F"
+
         if @@cell[45] != "F"
           @@cell[45] = "8"
         else
           @@cell[45] = "8"
           @@cell[44] = "F"
         end
+
         if @@level % 5 == 0
           @@bomb += 1
         end
       end
     end
+
     Board.ai_move
     if @@cell.index("8") == nil
       CLI.exit(@@level)
@@ -174,34 +191,100 @@ class Board
   def self.ai_move
     if @@cell.index("M") != nil
 
-      @@move = rand(0..3)
+      @@move_M = rand(0..3)
 
-      if @@move == 0
+      if @@move_M == 0
         if @@cell[@@cell.index("M")-7] != "F" && @@cell[@@cell.index("M")-7] != "X" && @@cell.index("M") > 6
 
           @@cell[@@cell.index("M")-7] = "M"
           @@cell[@@cell.index("M")+7] = " "
         end
 
-      elsif @@move == 1
+      elsif @@move_M == 1
         if @@cell[@@cell.index("M")+7] != "F" && @@cell[@@cell.index("M")+7] != "X" && @@cell.index("M") < 42
 
           @@cell[@@cell.index("M")+7] = "M"
           @@cell[@@cell.index("M")] = " "
         end
 
-      elsif @@move == 2
+      elsif @@move_M == 2
         if @@cell[@@cell.index("M")-1] != "F" && @@cell[@@cell.index("M")-1] != "X" && @@cell.index("M") != 0 && @@cell.index("M") != 7 && @@cell.index("M") != 14 && @@cell.index("M") != 21 && @@cell.index("M") != 28 && @@cell.index("M") != 35 && @@cell.index("M") != 42
 
           @@cell[@@cell.index("M")-1] = "M"
           @@cell[@@cell.index("M")+1] = " "
         end
 
-      elsif @@move == 3
+      elsif @@move_M == 3
         if @@cell[@@cell.index("M")+1] != "F" &&@@cell[@@cell.index("M")+1] != "X" && @@cell.index("M") != 6 && @@cell.index("M") != 13 && @@cell.index("M") != 20 && @@cell.index("M") != 27 && @@cell.index("M") != 34 && @@cell.index("M") != 41 && @@cell.index("M") != 48
 
           @@cell[@@cell.index("M")+1] = "M"
           @@cell[@@cell.index("M")] = " "
+        end
+      end
+    end
+    #################################################
+    if @@cell.index("W") != nil
+      @@move_W = rand(0..3)
+
+      if @@move_W == 0
+        if @@cell[@@cell.index("W")-7] != "F" && @@cell[@@cell.index("W")-7] != "X" && @@cell.index("W") > 6
+
+          @@cell[@@cell.index("W")-7] = "W"
+          @@cell[@@cell.index("W")+7] = " "
+        end
+
+      elsif @@move_W == 1
+        if @@cell[@@cell.index("W")+7] != "F" && @@cell[@@cell.index("W")+7] != "X" && @@cell.index("W") < 42
+
+          @@cell[@@cell.index("W")+7] = "W"
+          @@cell[@@cell.index("W")] = " "
+        end
+
+      elsif @@move_W == 2
+        if @@cell[@@cell.index("W")-1] != "F" && @@cell[@@cell.index("W")-1] != "X" && @@cell.index("W") != 0 && @@cell.index("W") != 7 && @@cell.index("W") != 14 && @@cell.index("W") != 21 && @@cell.index("W") != 28 && @@cell.index("W") != 35 && @@cell.index("W") != 42
+
+          @@cell[@@cell.index("W")-1] = "W"
+          @@cell[@@cell.index("W")+1] = " "
+        end
+
+      elsif @@move_W == 3
+        if @@cell[@@cell.index("W")+1] != "F" &&@@cell[@@cell.index("W")+1] != "X" && @@cell.index("W") != 6 && @@cell.index("W") != 13 && @@cell.index("W") != 20 && @@cell.index("W") != 27 && @@cell.index("W") != 34 && @@cell.index("W") != 41 && @@cell.index("W") != 48
+
+          @@cell[@@cell.index("W")+1] = "W"
+          @@cell[@@cell.index("W")] = " "
+        end
+      end
+    end
+############################################################
+    if @@cell.index("S") != nil
+      @@move_S = rand(0..3)
+
+      if @@move_S == 0
+        if @@cell[@@cell.index("S")-7] != "F" && @@cell[@@cell.index("S")-7] != "X" && @@cell.index("S") > 6
+
+          @@cell[@@cell.index("S")-7] = "S"
+          @@cell[@@cell.index("S")+7] = " "
+        end
+
+      elsif @@move_S == 1
+        if @@cell[@@cell.index("S")+7] != "F" && @@cell[@@cell.index("S")+7] != "X" && @@cell.index("S") < 42
+
+          @@cell[@@cell.index("S")+7] = "S"
+          @@cell[@@cell.index("S")] = " "
+        end
+
+      elsif @@move_S == 2
+        if @@cell[@@cell.index("S")-1] != "F" && @@cell[@@cell.index("S")-1] != "X" && @@cell.index("S") != 0 && @@cell.index("S") != 7 && @@cell.index("S") != 14 && @@cell.index("S") != 21 && @@cell.index("S") != 28 && @@cell.index("S") != 35 && @@cell.index("S") != 42
+
+          @@cell[@@cell.index("S")-1] = "S"
+          @@cell[@@cell.index("S")+1] = " "
+        end
+
+      elsif @@move_S == 3
+        if @@cell[@@cell.index("S")+1] != "F" &&@@cell[@@cell.index("S")+1] != "X" && @@cell.index("S") != 6 && @@cell.index("S") != 13 && @@cell.index("S") != 20 && @@cell.index("S") != 27 && @@cell.index("S") != 34 && @@cell.index("S") != 41 && @@cell.index("S") != 48
+
+          @@cell[@@cell.index("S")+1] = "S"
+          @@cell[@@cell.index("S")] = " "
         end
       end
     end
