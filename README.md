@@ -20,6 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
+run:
+
+    $ cd key_quest
+    $ cd bin
+    $./key_quest
+
 when you run the game it will explain itself to you.
 
 ## Development
