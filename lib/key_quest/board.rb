@@ -216,7 +216,7 @@ class Board
     Board.ai_move
     if @@cell.index("8") == nil
       CLI.exit(@@level, @@kills)
-      puts "| The monster got you  |"
+      puts "| The monsters got you |"
       puts "+----------------------+"
 
       exit
