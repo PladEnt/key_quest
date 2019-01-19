@@ -34,6 +34,25 @@ class Board
     Board.update_board
   end
 
+  def self.die_puts_board
+    puts " "
+    puts "+---+---+---+=O=+---+---+---+"
+    puts "| #{@@cell[0]} | #{@@cell[1]} | #{@@cell[2]} | #{@@cell[3]} | #{@@cell[4]} | #{@@cell[5]} | #{@@cell[6]} | "
+    puts "|---+---+---+---+---+---+---|"
+    puts "| #{@@cell[7]} | #{@@cell[8]} | #{@@cell[9]} | #{@@cell[10]} | #{@@cell[11]} | #{@@cell[12]} | #{@@cell[13]} |"
+    puts "|---+---+---+---+---+---+---|"
+    puts "| #{@@cell[14]} | #{@@cell[15]} | #{@@cell[16]} | #{@@cell[17]} | #{@@cell[18]} | #{@@cell[19]} | #{@@cell[20]} |"
+    puts "+---+---+---+---+---+---+---+"
+    puts "| #{@@cell[21]} | #{@@cell[22]} | #{@@cell[23]} | #{@@cell[24]} | #{@@cell[25]} | #{@@cell[26]} | #{@@cell[27]} |"
+    puts "+---+---+---+---+---+---+---+"
+    puts "| #{@@cell[28]} | #{@@cell[29]} | #{@@cell[30]} | #{@@cell[31]} | #{@@cell[32]} | #{@@cell[33]} | #{@@cell[34]} |"
+    puts "+---+---+---+---+---+---+---+"
+    puts "| #{@@cell[35]} | #{@@cell[36]} | #{@@cell[37]} | #{@@cell[38]} | #{@@cell[39]} | #{@@cell[40]} | #{@@cell[41]} |"
+    puts "+---+---+---+---+---+---+---+"
+    puts "| #{@@cell[42]} | #{@@cell[43]} | #{@@cell[44]} | #{@@cell[45]} | #{@@cell[46]} | #{@@cell[47]} | #{@@cell[48]} |"
+    puts "+---+---+---+-=-+---+---+---+"
+  end
+
   def self.update_board
     puts "| make your move |"
     puts "+----------------+"
@@ -48,6 +67,7 @@ class Board
         elsif @@cell[@@cell.index("8")-7] == "M" || @@cell[@@cell.index("8")-7] == "S"
           @@kills += 1
         elsif  @@cell[@@cell.index("8")-7] == "W"
+          Board.die_puts_board
           CLI.exit(@@level, @@kills)
           puts "|Jumping on W kills you|"
           puts "+----------------------+"
@@ -77,6 +97,7 @@ class Board
           @@kills += 1
 
         elsif  @@cell[@@cell.index("8")+7] == "W"
+          Board.die_puts_board
           CLI.exit(@@level, @@kills)
           puts "|Jumping on W kills you|"
           puts "+----------------------+"
@@ -106,6 +127,7 @@ class Board
           @@kills += 1
 
         elsif  @@cell[@@cell.index("8")-1] == "W"
+          Board.die_puts_board
           CLI.exit(@@level, @@kills)
           puts "|Jumping on W kills you|"
           puts "+----------------------+"
@@ -135,6 +157,7 @@ class Board
           @@kills += 1
 
         elsif  @@cell[@@cell.index("8")+1] == "W"
+          Board.die_puts_board
           CLI.exit(@@level, @@kills)
           puts "|Jumping on W kills you|"
           puts "+----------------------+"
@@ -212,9 +235,12 @@ class Board
         end
       end
     end
+    if imput != "c"
+      Board.ai_move
+    end
 
-    Board.ai_move
     if @@cell.index("8") == nil
+      Board.die_puts_board
       CLI.exit(@@level, @@kills)
       puts "| The monsters got you |"
       puts "+----------------------+"
