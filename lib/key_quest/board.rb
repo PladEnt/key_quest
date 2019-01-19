@@ -2,6 +2,7 @@
 class Board
   @@cell
   @@level
+  @@kills
   @@key
   @@bomb
 
@@ -10,6 +11,7 @@ class Board
     @@level = 1
     @@key = "no"
     @@bomb = 3
+    @@kills = 0
   end
 
   def self.puts_board
@@ -43,9 +45,10 @@ class Board
           @@key = "yes"
         elsif @@cell[@@cell.index("8")-7] == "O"
           @@bomb += 1
-
+        elsif @@cell[@@cell.index("8")-7] == "M" || @@cell[@@cell.index("8")-7] == "S"
+          @@kills += 1
         elsif  @@cell[@@cell.index("8")-7] == "W"
-          CLI.exit(@@level)
+          CLI.exit(@@level, @@kills)
           puts "|Jumping on W kills you|"
           puts "+----------------------+"
           exit
@@ -70,8 +73,11 @@ class Board
           @@key = "yes"
         elsif @@cell[@@cell.index("8")+7] == "O"
           @@bomb += 1
+        elsif @@cell[@@cell.index("8")+7] == "M" || @@cell[@@cell.index("8")+7] == "S"
+          @@kills += 1
+
         elsif  @@cell[@@cell.index("8")+7] == "W"
-          CLI.exit(@@level)
+          CLI.exit(@@level, @@kills)
           puts "|Jumping on W kills you|"
           puts "+----------------------+"
           exit
@@ -96,8 +102,11 @@ class Board
           @@key = "yes"
         elsif @@cell[@@cell.index("8")-1] == "O"
           @@bomb += 1
+        elsif @@cell[@@cell.index("8")-1] == "M" || @@cell[@@cell.index("8")-1] == "S"
+          @@kills += 1
+
         elsif  @@cell[@@cell.index("8")-1] == "W"
-          CLI.exit(@@level)
+          CLI.exit(@@level, @@kills)
           puts "|Jumping on W kills you|"
           puts "+----------------------+"
           exit
@@ -122,8 +131,11 @@ class Board
           @@key = "yes"
         elsif @@cell[@@cell.index("8")+1] == "O"
           @@bomb += 1
+        elsif @@cell[@@cell.index("8")+1] == "M" || @@cell[@@cell.index("8")+1] == "S"
+          @@kills += 1
+
         elsif  @@cell[@@cell.index("8")+1] == "W"
-          CLI.exit(@@level)
+          CLI.exit(@@level, @@kills)
           puts "|Jumping on W kills you|"
           puts "+----------------------+"
           exit
@@ -150,8 +162,7 @@ class Board
 
 
     elsif imput == "exit"
-      num = @@level
-      CLI.exit(num)
+      CLI.exit(@@level, @@kills)
       exit
 
     elsif imput == "c"
@@ -204,7 +215,7 @@ class Board
 
     Board.ai_move
     if @@cell.index("8") == nil
-      CLI.exit(@@level)
+      CLI.exit(@@level, @@kills)
       puts "| The monster got you  |"
       puts "+----------------------+"
 

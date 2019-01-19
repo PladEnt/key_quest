@@ -49,7 +49,7 @@ class CLI
     Board.puts_board
   end
 
-  def self.exit(level)
+  def self.exit(level, kills)
     puts '           () '
     puts '   _       \/       _ '
     puts '0_/ \------/\------/ \_0 '
@@ -62,6 +62,9 @@ class CLI
     puts "+----------------------+"
     puts "| You made it to level |"
     puts "           #{level}"
+    puts "+----------------------+"
+    puts "|      You killed      |"
+    puts "       #{kills} monsters"
     puts "+----------------------+"
 
   end
