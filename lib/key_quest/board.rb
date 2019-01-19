@@ -293,7 +293,7 @@ class Board
     end
 ############################################################
     if @@cell.index("S") != nil
-      @@move_S = rand(0..3)
+      @@move_S = rand(0..7)
 
       if @@move_S == 0
         if @@cell[@@cell.index("S")-7] != "F" && @@cell.index("S") > 6
@@ -320,6 +320,34 @@ class Board
         if @@cell[@@cell.index("S")+1] != "F" && @@cell.index("S") != 6 && @@cell.index("S") != 13 && @@cell.index("S") != 20 && @@cell.index("S") != 27 && @@cell.index("S") != 34 && @@cell.index("S") != 41 && @@cell.index("S") != 48
 
           @@cell[@@cell.index("S")+1] = "S"
+          @@cell[@@cell.index("S")] = " "
+        end
+
+      elsif @@move_S == 4
+        if @@cell[@@cell.index("S")-6] != "F" && @@cell.index("S") > 6 && @@cell.index("S") != 6 && @@cell.index("S") != 13 && @@cell.index("S") != 20 && @@cell.index("S") != 27 && @@cell.index("S") != 34 && @@cell.index("S") != 41 && @@cell.index("S") != 48
+
+          @@cell[@@cell.index("S")-6] = "S"
+          @@cell[@@cell.index("S")+6] = " "
+        end
+
+      elsif @@move_S == 5
+        if @@cell[@@cell.index("S")-8] != "F" && @@cell.index("S") > 6 && @@cell.index("S") != 0 && @@cell.index("S") != 7 && @@cell.index("S") != 14 && @@cell.index("S") != 21 && @@cell.index("S") != 28 && @@cell.index("S") != 35 && @@cell.index("S") != 42
+
+          @@cell[@@cell.index("S")-8] = "S"
+          @@cell[@@cell.index("S")+8] = " "
+        end
+
+      elsif @@move_S == 6
+        if @@cell[@@cell.index("S")+6] != "F" && @@cell.index("S") < 42 && @@cell.index("S") != 0 && @@cell.index("S") != 7 && @@cell.index("S") != 14 && @@cell.index("S") != 21 && @@cell.index("S") != 28 && @@cell.index("S") != 35 && @@cell.index("S") != 42
+
+          @@cell[@@cell.index("S")+6] = "S"
+          @@cell[@@cell.index("S")] = " "
+        end
+
+      elsif @@move_S == 7
+        if @@cell[@@cell.index("S")+8] != "F" && @@cell.index("S") < 42 && @@cell.index("S") != 6 && @@cell.index("S") != 13 && @@cell.index("S") != 20 && @@cell.index("S") != 27 && @@cell.index("S") != 34 && @@cell.index("S") != 41 && @@cell.index("S") != 48
+
+          @@cell[@@cell.index("S")+8] = "S"
           @@cell[@@cell.index("S")] = " "
         end
       end
