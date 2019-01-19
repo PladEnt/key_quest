@@ -1,8 +1,6 @@
 # KeyQuest
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/key_quest`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to Key Quest. Key quest is a dungeon crawler where you try to find the key and make it to the door, all while trying not to be killed by the monsters. The levels are randomly generated, and get harder as you go, so it will be different every time. collect bombs to destroy walls to clear your path and see how far you can make it. P.S. My best is level 43, try and best that ;)
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+when you run the game it will explain itself to you.
 
 ## Development
 
