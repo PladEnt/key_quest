@@ -34,7 +34,7 @@ class CLI
     puts "|         door.        |"
     puts "+----------------------+"
     puts "| 'X's are walls, you  |"
-    puts "| can't go though them |"
+    puts "|can't go through them |"
     puts "+----------------------+"
     puts "|  If you have a bomb  |"
     puts "|  you can destoy the  |"
