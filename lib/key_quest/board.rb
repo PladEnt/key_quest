@@ -235,7 +235,7 @@ class Board
         end
       end
     end
-    if imput != "c"
+    if imput == "w" || imput == "a" || imput == "s" || imput == "d"
       Board.ai_move
     end
 
