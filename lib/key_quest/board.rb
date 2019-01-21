@@ -58,7 +58,51 @@ class Board
     puts "+----------------+"
     imput = gets.chomp.strip
 
-    if imput == "w"
+    if imput == "w" && @@cell.index("8") == 3 && @@key == "yes"
+      @@cell = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
+      @@key = "no"
+      @@level += 1
+      num = @@level
+
+      while num > 0
+        @@cell[rand(7..41)] = "X"
+        num -=1
+      end
+
+      if @@level % 10 == 0
+        @@cell[rand(0..48)] = "O"
+      end
+
+      if @@level == 30
+        @@cell = ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]
+      end
+
+      if @@level >= 15
+        @@cell[rand(7..41)] = "M"
+        @@cell[rand(7..41)] = "W"
+        @@cell[rand(7..41)] = "S"
+      elsif @@level >= 10
+        @@cell[rand(7..41)] = "M"
+        @@cell[rand(7..41)] = "W"
+      else
+        @@cell[rand(7..41)] = "M"
+      end
+
+
+      @@cell[rand(0..48)] = "F"
+
+      if @@cell[45] != "F"
+        @@cell[45] = "8"
+      else
+        @@cell[45] = "8"
+        @@cell[44] = "F"
+      end
+
+      if @@level % 5 == 0
+        @@bomb += 1
+      end
+
+    elsif imput == "w"
       if @@cell[@@cell.index("8")-7] != "X" && @@cell.index("8") > 6
         if @@cell[@@cell.index("8")-7] == "F"
           @@key = "yes"
@@ -72,15 +116,6 @@ class Board
           puts "|Jumping on W kills you|"
           puts "+----------------------+"
           exit
-        end
-
-        @@cell[@@cell.index("8")-7] = "8"
-        @@cell[@@cell.index("8")+7] = " "
-
-      elsif @@cell[@@cell.index("8")-7] == "X" && @@bomb > 0
-        @@bomb -= 1
-        if @@cell[@@cell.index("8")-7] == "F"
-          @@key = "yes"
         end
 
         @@cell[@@cell.index("8")-7] = "8"
@@ -106,15 +141,6 @@ class Board
 
         @@cell[@@cell.index("8")+7] = "8"
         @@cell[@@cell.index("8")] = " "
-
-      elsif @@cell[@@cell.index("8")+7] == "X" && @@bomb > 0
-        @@bomb -= 1
-        if @@cell[@@cell.index("8")+7] == "F"
-          @@key = "yes"
-        end
-
-        @@cell[@@cell.index("8")+7] = "8"
-        @@cell[@@cell.index("8")] = " "
       end
 
     elsif imput == "a"
@@ -136,15 +162,6 @@ class Board
 
         @@cell[@@cell.index("8")-1] = "8"
         @@cell[@@cell.index("8")+1] = " "
-
-      elsif @@cell[@@cell.index("8")-1] == "X" && @@bomb > 0
-        @@bomb -= 1
-        if @@cell[@@cell.index("8")-1] == "F"
-          @@key = "yes"
-        end
-
-      @@cell[@@cell.index("8")-1] = "8"
-      @@cell[@@cell.index("8")+1] = " "
       end
 
     elsif imput == "d"
@@ -166,15 +183,6 @@ class Board
 
         @@cell[@@cell.index("8")+1] = "8"
         @@cell[@@cell.index("8")] = " "
-
-      elsif @@cell[@@cell.index("8")+1] == "X" && @@bomb > 0
-         @@bomb -= 1
-        if @@cell[@@cell.index("8")-1] == "F"
-          @@key = "yes"
-        end
-
-        @@cell[@@cell.index("8")+1] = "8"
-        @@cell[@@cell.index("8")] = " "
       end
 
     elsif imput == "restart"
@@ -189,52 +197,22 @@ class Board
       exit
 
     elsif imput == "c"
-      if @@cell.index("8") == 3 && @@key == "yes"
-        @@cell = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
-
-        @@key = "no"
-        @@level += 1
-        num = @@level
-
-        while num > 0
-          @@cell[rand(7..41)] = "X"
-          num -=1
-        end
-
-        if @@level % 10 == 0
-          @@cell[rand(0..48)] = "O"
-        end
-
-        if @@level == 30
-          @@cell = ["O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]
-        end
-
-        if @@level >= 15
-          @@cell[rand(7..41)] = "M"
-          @@cell[rand(7..41)] = "W"
-          @@cell[rand(7..41)] = "S"
-        elsif @@level >= 10
-          @@cell[rand(7..41)] = "M"
-          @@cell[rand(7..41)] = "W"
-        else
-          @@cell[rand(7..41)] = "M"
-        end
-
-
-        @@cell[rand(0..48)] = "F"
-
-        if @@cell[45] != "F"
-          @@cell[45] = "8"
-        else
-          @@cell[45] = "8"
-          @@cell[44] = "F"
-        end
-
-        if @@level % 5 == 0
-          @@bomb += 1
-        end
+      if @@cell[@@cell.index("8")-7] != "F"
+        @@cell[@@cell.index("8")-7] = " "
       end
+      if @@cell[@@cell.index("8")+7] != "F"
+        @@cell[@@cell.index("8")+7] = " "
+      end
+      if @@cell[@@cell.index("8")-1] != "F"
+        @@cell[@@cell.index("8")-1] = " "
+      end
+      if @@cell[@@cell.index("8")+1] != "F"
+        @@cell[@@cell.index("8")+1] = " "
+      end
+      @@bomb -= 1
+
     end
+
     if imput == "w" || imput == "a" || imput == "s" || imput == "d"
       Board.ai_move
     end
@@ -247,6 +225,7 @@ class Board
 
       exit
     end
+
     Board.puts_board
   end
 
