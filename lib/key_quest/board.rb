@@ -5,7 +5,6 @@ class Board
   @@kills
   @@key
   @@bomb
-  @@next
 
   def initialize
     @@cell = ["F", " ", " ", " ", " ", " ", "M", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "8", " ", " ", " "]
@@ -13,7 +12,6 @@ class Board
     @@key = "no"
     @@bomb = 3
     @@kills = 0
-    @@next = "no"
   end
 
   def self.puts_board
@@ -62,7 +60,6 @@ class Board
     imput = gets.chomp.strip
 
     if imput == "w" && @@cell.index("8") == 3 && @@key == "yes"
-      @@next = "yes"
       @@cell = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
       @@key = "no"
       @@level += 1
@@ -217,7 +214,9 @@ class Board
 
     end
 
-    if imput == "w" || imput == "a" || imput == "s" || imput == "d" && @@next = "no"
+    if imput == "w" && @@cell.index("8") != 3
+      Board.ai_move
+    elsif imput == "a" || imput == "s" || imput == "d"
       Board.ai_move
     end
 
